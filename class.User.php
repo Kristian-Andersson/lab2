@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 class User {
     
     public function userRegister($postData) {        
@@ -10,10 +8,6 @@ class User {
             echo "Sorry, the username: " . $postData['username'] . " is taken.";
         } elseif ($postData['username'] == "" && $postData['userPassword'] == "") {
             echo "Enter your username and password.";
-        } elseif ($postData['username'] == "") {
-            echo "Enter your username.";
-        } elseif ($postData['userPassword'] == "") {
-            echo "Enter your password.";
         } else {
             // Om inte användarnamnet är upptaget så skriver den användarnamnet och lösenordet (saltat) till en csv-fil
             $hashedPass = password_hash($postData['userPassword'], PASSWORD_DEFAULT);
@@ -47,17 +41,17 @@ class User {
                 <?php
                 exit();
             } else {
-                echo "Wrong password.";
+                echo "Wrong username or password.";
             }
+        // Skriver ut att både användarnamn och lösenord är fel pga säkerhet. 
         } else {
-            echo "Wrong username.";
+            echo "Wrong username or password.";
         }  
     }
 
     public function userLogout($logoutData) {
         // Om användaren klickar på logout så töms SESSION värdena och man blir redirectad till startsidan
         unset($_SESSION['username']);
-        unset($_SESSION['userPassword']);
         header("Location: http://localhost/lab2/index.php", true, 301);
         exit();
     }

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include_once('class.User.php');
 
 // Kollar om SESSION variabeln har ett värde. (Så att man inte kan skriva welcome.php i adressfältet och lyckas)

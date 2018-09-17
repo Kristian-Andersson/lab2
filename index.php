@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include_once('class.User.php');
 
 // Kollar om användaren har klickat på submit sedan lägger jag $_POST variabeln i en icke reserverad variabel
